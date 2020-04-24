@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:jpetty/screens/authenticate/register.dart';
 import 'package:jpetty/services/auth.dart';
 import 'package:jpetty/shared/constants.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({ this.toggleView });
+  Register({ this.toggleView });
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -64,7 +63,7 @@ class _SignInState extends State<SignIn> {
                 height: 15.0,
               ),
               Text(
-                'Iniciar sesión',
+                'Crear cuenta',
                 textAlign: textAlign,
                 style: TextStyle(
                   color:  Colors.deepPurple[800],
@@ -110,7 +109,7 @@ class _SignInState extends State<SignIn> {
                 padding: EdgeInsets.fromLTRB(60, 12, 60, 12),
                 color: Colors.deepPurple[400],
                 child: Text(
-                  'ENTRAR',
+                  'REGISTRARSE',
                   style: TextStyle(
                     color: textColor,
                     letterSpacing: letterSpacing,
@@ -124,7 +123,7 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 35.0,),
               Text(
-                '¿No nos conocemos aún?',
+                '¿Ya nos conocemos?',
                 textAlign: textAlign,
                 style: TextStyle(
                   color: Colors.deepPurple[900],
@@ -135,7 +134,7 @@ class _SignInState extends State<SignIn> {
               FlatButton(
                 textColor: Colors.deepPurple[900],
                 child: Text(
-                  'REGISTRARSE',
+                  'INICIAR SESIÓN',
                   style: TextStyle(
                     fontSize: 18,
                       letterSpacing: letterSpacing,
