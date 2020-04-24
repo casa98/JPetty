@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jpetty/screens/authenticate/register.dart';
 import 'package:jpetty/services/auth.dart';
 import 'package:jpetty/shared/constants.dart';
+import 'package:jpetty/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
 
@@ -29,10 +29,10 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: Container(
-        padding: EdgeInsets.all(32.0),
+        padding: EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 0.0),
         child: Form(
           child: ListView(
             children: <Widget>[
@@ -93,7 +93,7 @@ class _SignInState extends State<SignIn> {
                 decoration:
                     textInputDecor.copyWith(hintText: 'Contraseña'),
                 validator: (val) => val.length < 6
-                    ? 'Ingrese contraseña. 6 o más caracteres'
+                    ? 'Ingrese 6 o más caracteres'
                     : null,
                 obscureText: true,
                 onChanged: (val) {
@@ -117,9 +117,18 @@ class _SignInState extends State<SignIn> {
                     fontSize: 18.0,
                   ),
                 ),
-                onPressed: (){
-                  print(email);
-                  print(passwd);
+                onPressed: () async{
+                  //if(_formKey.currentState.validate()){
+                  setState(() => loading = true);
+                  dynamic result = await _auth.sigInWithEmailPasswd(email, passwd);
+                  if(result == null){
+                    setState(() {
+                      loading = false;
+                      error =
+                      'Usuario no encontrado :(';
+                      });
+                  }
+                  //}
                 },
               ),
               SizedBox(height: 35.0,),

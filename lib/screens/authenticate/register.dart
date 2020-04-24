@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jpetty/services/auth.dart';
 import 'package:jpetty/shared/constants.dart';
+import 'package:jpetty/shared/loading.dart';
 
 class Register extends StatefulWidget {
 
@@ -28,10 +29,10 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: Container(
-        padding: EdgeInsets.all(32.0),
+        padding: EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 0.0),
         child: Form(
           child: ListView(
             children: <Widget>[
@@ -92,7 +93,7 @@ class _RegisterState extends State<Register> {
                 decoration:
                     textInputDecor.copyWith(hintText: 'Contraseña'),
                 validator: (val) => val.length < 6
-                    ? 'Ingrese contraseña. 6 o más caracteres'
+                    ? 'Ingrese 6 o más caracteres'
                     : null,
                 obscureText: true,
                 onChanged: (val) {
@@ -116,9 +117,18 @@ class _RegisterState extends State<Register> {
                     fontSize: 18.0,
                   ),
                 ),
-                onPressed: (){
-                  print(email);
-                  print(passwd);
+                onPressed: () async{
+                  //if(_formKey.currentState.validate()){
+                  setState(() => loading = true);
+                  dynamic result = await _auth.registerWithEmailPasswd(email, passwd);
+                  if(result == null){
+                    setState(() {
+                      loading = false;
+                      error =
+                      'Escribe un correo válido :)';
+                      });
+                  }
+                  //}
                 },
               ),
               SizedBox(height: 35.0,),
@@ -144,6 +154,31 @@ class _RegisterState extends State<Register> {
                 ),
                 onPressed: () {
                   widget.toggleView();
+                },
+              ),
+              SizedBox(height: 20.0,),
+              Text(
+                '¿Quieres ser paseador?',
+                textAlign: textAlign,
+                style: TextStyle(
+                  color: Colors.deepPurple[900],
+                  letterSpacing: letterSpacing,
+                  fontSize: 17.0,
+                ),
+              ),
+              FlatButton(
+                textColor: Colors.deepPurple[900],
+                child: Text(
+                  'VER MÁS',
+                  style: TextStyle(
+                      fontSize: 18,
+                      letterSpacing: letterSpacing,
+                      decoration: TextDecoration.underline,
+                      decorationStyle: TextDecorationStyle.solid
+                  ),
+                ),
+                onPressed: () {
+
                 },
               ),
             ],
