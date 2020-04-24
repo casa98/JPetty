@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "634833652627",
+    "firebase_url": "https://jpetty-bb2e0.firebaseio.com",
+    "project_id": "jpetty-bb2e0",
+    "storage_bucket": "jpetty-bb2e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634833652627:android:7f0d283b7b3da99531b666",
+        "android_client_info": {
+          "package_name": "com.example.jpetty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634833652627-f0gced8mfe5uluirind5u68hn0bqavtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtBWtYFkLH5XTMqIZ6okHalyYh1Cj2p6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634833652627-f0gced8mfe5uluirind5u68hn0bqavtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
