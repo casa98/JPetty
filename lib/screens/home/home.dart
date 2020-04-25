@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jpetty/services/auth.dart';
 
+//////////////////////////////////////////////////////
+///
+///   WIDGET NOT BEING USED AT THE MOMENT
+///   Do not delete while problem with Signing Out has been solved
+///
+//////////////////////////////////////////////////////
+
 class Home extends StatelessWidget {
 
   final AuthService _auth = AuthService();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jpetty/home/home.dart';
 import 'package:jpetty/screens/authenticate/authenticate.dart';
-import 'package:jpetty/screens/home/home.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -13,7 +13,7 @@ class Wrapper extends StatelessWidget {
       return Authenticate();
     }
     else{
-      return Home();
+      return HomePage();
     }
   }
 }
